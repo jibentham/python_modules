@@ -1,5 +1,5 @@
 from .capable_creatures import Sproutling, Bloomelle, Shiftling, Morphagon
-from ex0.creature_factories import CreatureFactory
+from ex0 import Creature, CreatureFactory
 
 
 class HealingCreatureFactory(CreatureFactory):

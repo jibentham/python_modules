@@ -8,7 +8,7 @@ class Creature(ABC):
     @abstractmethod
     def attack(self) -> str:
         ...
-    
+
     def describe(self) -> str:
         return (f"{self.creature_name} is a {self.creature_type} type Creature")
 

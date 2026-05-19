@@ -1,5 +1,6 @@
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 
+
 def heal_factory(factory: HealingCreatureFactory) -> None:
     base = factory.create_base()
     evolved = factory.create_evolved()
@@ -41,7 +42,6 @@ def main() -> None:
     heal_factory(healing_creature)
     print("=== Testing creature with transform capability ===")
     transform_factory(morphing_creature)
-
 
 
 if __name__ == "__main__":

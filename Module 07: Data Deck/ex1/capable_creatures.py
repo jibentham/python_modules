@@ -1,5 +1,6 @@
-from ex0.creatures import Creature
+from ex0 import Creature
 from .capabilities import HealCapability, TransformCapability
+
 
 class Sproutling(Creature, HealCapability):
     creature_name = "Sproutling"

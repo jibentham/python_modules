@@ -1,4 +1,4 @@
-from ex0 import Creature, CreatureFactory, FlameFactory, AquaFactory
+from ex0 import CreatureFactory, FlameFactory, AquaFactory
 
 
 def verify_factory(factory: CreatureFactory) -> None:
@@ -20,7 +20,7 @@ def creature_fight(factory1: CreatureFactory, factory2: CreatureFactory) -> None
     print(creature2.attack())
 
 
-def main() -> None: 
+def main() -> None:
     flame_factory = FlameFactory()
     aqua_factory = AquaFactory()
 

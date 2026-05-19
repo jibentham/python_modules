@@ -6,10 +6,11 @@ class CreatureFactory(ABC):
     @abstractmethod
     def create_base(self) -> Creature:
         ...
-    
+
     @abstractmethod
     def create_evolved(self) -> Creature:
         ...
+
 
 class FlameFactory(CreatureFactory):
     def create_base(self) -> Creature:
