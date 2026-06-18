@@ -8,7 +8,7 @@ def in_venv() -> bool:
 
 
 def main() -> None:
-    venv = os.environ.get("VIRTUAL_ENV")
+    venv: str | None = os.environ.get("VIRTUAL_ENV")
 
     if in_venv():
         print("\nMATRIX STATUS: Welcome to the construct\n")
@@ -17,6 +17,7 @@ def main() -> None:
 
     print(f"Current Python: {sys.executable}")
     if in_venv():
+        assert venv is not None
         print(f"Virtual environment: {os.path.basename(venv)}")
         print(f"Environment path: {venv}")
     else:
