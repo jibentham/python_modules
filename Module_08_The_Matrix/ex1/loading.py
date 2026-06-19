@@ -1,9 +1,9 @@
+import sys
 try:
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
     import requests
-    import sys
 except ImportError as e:
     print(f"Missing dependency: {e}")
     print("\nInstall missing packages with:")
@@ -12,6 +12,7 @@ except ImportError as e:
     print("\nTo run use:")
     print("python3 loading.py (for pip)")
     print("poetry run python loading.py (for poetry)")
+    sys.exit(1)
 
 
 def main() -> None:
