@@ -34,3 +34,7 @@ def main() -> None:
     print(f"{'[OK] .env file properly configured' if env_loaded else '[KO] .env not found. Using environment variables'}")
     print(f"[OK] {'production overrides available' if MATRIX_MODE == 'development' else 'development tools ready for use'}")
     print("\n The Oracle sees all configurations.")
+
+
+if __name__ == "__main__":
+    main()
