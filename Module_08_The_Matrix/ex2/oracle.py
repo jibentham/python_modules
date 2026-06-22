@@ -1,6 +1,11 @@
 import os
 import sys
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError as e:
+    print(f"Missing dependency: {e}")
+    print("Use 'pip install python-dotenv' to install the necessary module.")
+    sys.exit(1)
 
 
 env_loaded: bool = load_dotenv()
