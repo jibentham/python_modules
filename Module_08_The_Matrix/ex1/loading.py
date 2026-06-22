@@ -1,11 +1,20 @@
 import sys
-try:
-    import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    import requests
-except ImportError as e:
-    print(f"Missing dependency: {e}")
+dependencies = ['pandas', 'numpy', 'matplotlib.pyplot', 'requests']
+missing = []
+for pkg in dependencies:
+    try:
+        if pkg == 'pandas':
+            pd = __import__(pkg, fromlist=[""])
+        elif pkg == 'numpy':
+            np = __import__(pkg, fromlist=[""])
+        elif pkg == 'matplotlib.pyplot':
+            plt = __import__(pkg, fromlist=[""])
+        else:
+            requests = __import__(pkg, fromlist=[""])
+    except ImportError as e:
+        missing.append(pkg)
+        print(f"Missing dependency: {e}")
+if missing:   
     print("\nInstall missing packages with:")
     print("pip install -r requirements.txt (for pip)")
     print("poetry install (for poetry)")
