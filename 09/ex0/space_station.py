@@ -26,7 +26,7 @@ def main() -> None:
                 crew_size=6,
                 power_level=85.5,
                 oxygen_level=92.3,
-                last_maintenance="2026-06-27T14:30:00",
+                last_maintenance=datetime(2026, 6, 27, 14, 30, 0),
                 is_operational=True,
                 notes=None
                 )
@@ -51,7 +51,7 @@ def main() -> None:
                 crew_size=55,
                 power_level=85.5,
                 oxygen_level=92.3,
-                last_maintenance="2026-06-27T14:30:00",
+                last_maintenance=datetime(2026, 6, 27, 14, 30, 0),
                 is_operational=True,
                 notes=None
                 )
