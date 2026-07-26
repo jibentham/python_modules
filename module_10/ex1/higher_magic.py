@@ -1,6 +1,9 @@
+from typing import Callable
+
+
 def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:
     def combined(target: str, power: int) -> tuple:
-        return(spell1(target, power), spell2(target, power))
+        return (spell1(target, power), spell2(target, power))
     return combined
 
 
@@ -15,7 +18,7 @@ def conditional_caster(condition: Callable, spell: Callable) -> Callable:
         if condition(target, power):
             return spell(target, power)
         else:
-            return ("Spell fizzled")
+            return "Spell fizzled"
     return cast
 
 
@@ -26,9 +29,8 @@ def spell_sequence(spells: list[Callable]) -> Callable:
 
 
 def main() -> None:
-    
+    pass
 
 
 if __name__ == "__main__":
     main()
-
