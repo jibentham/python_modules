@@ -1,5 +1,15 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from data_generator import FuncMageDataGenerator
+
+
 def artifact_sorter(artifacts: list[dict]) -> list[dict]:
-    return sorted(artifacts, key=lambda artifact: artifact["power"], reverse=True)
+    return sorted(
+        artifacts, key=lambda artifact: artifact["power"], reverse=True
+        )
 
 
 def power_filter(mages: list[dict], min_power: int) -> list[dict]:
@@ -20,20 +30,9 @@ def mage_stats(mages: list[dict]) -> dict:
 
 
 def main() -> None:
-    artifacts = [
-        {"name": "Light Prism", "power": 74, "type": "weapon"},
-        {"name": "Lightning Rod", "power": 114, "type": "relic"},
-        {"name": "Light Prism", "power": 80, "type": "accessory"},
-        {"name": "Earth Shield", "power": 114, "type": "accessory"},
-    ]
-    mages = [
-        {"name": "Casey", "power": 97, "element": "lightning"},
-        {"name": "Ember", "power": 90, "element": "ice"},
-        {"name": "Nova", "power": 98, "element": "fire"},
-        {"name": "Alex", "power": 74, "element": "water"},
-        {"name": "Sage", "power": 69, "element": "earth"},
-    ]
-    spells = ["darkness", "fireball", "tornado", "earthquake"]
+    artifacts = FuncMageDataGenerator.generate_artifacts(4)
+    mages = FuncMageDataGenerator.generate_mages(5)
+    spells = FuncMageDataGenerator.generate_spells(4)
 
     print(artifact_sorter(artifacts))
     print("\n")

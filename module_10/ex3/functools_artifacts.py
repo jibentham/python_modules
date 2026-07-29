@@ -1,6 +1,15 @@
-from typing import Callable, Any
+import sys
+import random
+from collections.abc import Callable
+from typing import Any
 from functools import reduce, partial, lru_cache, singledispatch
 from operator import add, mul
+from collections.abc import Callable
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from data_generator import FuncMageDataGenerator
 
 
 def spell_reducer(spells: list[int], operation: str) -> int:
@@ -56,3 +65,31 @@ def spell_dispatcher() -> Callable[[Any], str]:
         return f"spell multi casted: {len(data)}\n"
 
     return process
+
+
+def main() -> None:
+    def base_enchantment(item: str = "Sword", power: int = 0, element: str = "") -> str:
+        return f"{item} enchanted with {element} ({power} power)"
+
+    spell_powers = FuncMageDataGenerator.generate_spell_powers(6)
+    operations = ["add", "multiply", "max", "min"]
+    fibonacci_tests = [random.randint(8, 20) for _ in range(3)]
+    enchants = partial_enchanter(base_enchantment)
+    process = spell_dispatcher()
+
+    for op in operations:
+        print(f"{op}: {spell_reducer(spell_powers, op)}")
+    print()
+    for name, enchant_fn in enchants.items():
+        print(enchant_fn(item="Sword"))
+    print()
+    for n in fibonacci_tests:
+        print(f"fibonacci({n}) = {memoized_fibonacci(n)}")
+    print()
+    print(process(42))
+    print(process("fireball"))
+    print(process([1, 2, 3]))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,11 @@
-from typing import Callable
+import sys
+import random
+from collections.abc import Callable
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from data_generator import FuncMageDataGenerator
 
 
 def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:
@@ -29,7 +36,28 @@ def spell_sequence(spells: list[Callable]) -> Callable:
 
 
 def main() -> None:
-    pass
+    def fireball(target: str, power: int) -> str:
+        return f"{target} hit by fireball for {power} damage"
+    
+    def freeze(target: str, power: int) -> str:
+        return f"{target} frozen with {power} power"
+    
+    def is_strong_enough(target: str, power: int) -> bool:
+        return power >= 30
+    
+    test_powers = FuncMageDataGenerator.generate_spell_powers(3)
+    test_targets = random.sample(FuncMageDataGenerator.MAGE_NAMES, 3)
+    combined = spell_combiner(fireball, freeze)
+    amplified = power_amplifier(fireball, 2)
+    conditional = conditional_caster(is_strong_enough, fireball)
+    sequence = spell_sequence([fireball, freeze])
+    
+    for target, power in zip(test_targets, test_powers):
+        print(combined(target, power))
+        print(amplified(target, power))
+        print(conditional(target, power))
+        print(sequence(target, power))
+        print()
 
 
 if __name__ == "__main__":
